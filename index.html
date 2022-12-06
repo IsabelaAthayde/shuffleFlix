@@ -11,30 +11,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img id="logo" src="./assets/shuffle.svg" alt="logo de aleatorizar">
-    <h1>Não sabe o que assistir?</h1>  
-
+    <header>
+        <nav>
+            <ul>
+                <li>Filmes</li>
+                <img id="logo" src="./assets/shuffle.svg" alt="logo de aleatorizar">
+                <li>Séries</li>
+            </ul>
+        </nav>
+    </header>
     
+    <h1>Não sabe o que assistir?</h1>  
     <section id="movie">
-        <img src="./assets/img.svg" alt="">
-        <div id="about">
-            <h2>Os Caça-Fantasmas</h2>
-            <p id="sinopse">Em Nova York Peter Venkman, 
-                Ray Stantz e Egon Spengler são três cientistas 
-                do departamento de psicologia da Columbia University, 
-                que se dedicam ao estudo de casos paranormais. 
-                Quando a subvenção termina eles são despedidos e 
-                Venkman sugere que abram um negócio próprio, 
-                a exterminadora de fantasmas Ghostbusters. Inicialmente 
-                eles só têm despesas e nenhum cliente, mas eis que 
-                surge Dana Barrett, uma violoncelista que teve uma 
-                experiência assustadora em seu apartamento.
-            </p>
-        </div>
+        <div id="about"></div>
     </section>
-    <button><img src="./assets/shuffle.svg" alt=""> Encontrar Filme</button>
+    <button id="button"><img src="./assets/shuffle.svg" alt=""> Encontrar Filme</button>
     <footer>
-        Clique em "Encontrar filme" que traremos informações
+        Clique em "Encontrar <span id="type">filme</span>" que traremos informações
         de algum série para você assistir hoje.
     </footer>
     <script src="./js/main.js" type="module"></script>

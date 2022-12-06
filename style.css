@@ -35,21 +35,56 @@ body {
     overflow-x: hidden;    
 }
 
+header {
+    width: 100%;
+    padding: 0 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+
+}
+nav {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4rem;
+}
+
+nav li {
+    list-style: none;
+    text-decoration: underline;
+    color: var(--txt-clr);
+    letter-spacing: 2px;
+}
+
+nav li:hover {
+    cursor: pointer;
+}
+
 #logo {
-    max-width: 87.24px;
-    max-height: 62.93px;
-    
-    margin-top: 2rem;
+    max-width: 85px;
+    max-height: 60px;
 }
 
 h1 {
     font-weight: 700;
-    font-size: 3.5rem;
+    font-size: 4rem;
+    word-wrap: break-word;
 }
 
 #movie {
     display: flex;
     gap: 3.4rem;
+
+    justify-content: center;
+    align-items: flex-start;
 }
 
 #movie img {
@@ -64,9 +99,9 @@ h1 {
 
 #about {
     width: 35rem;
-    
     text-align: left;
 }
+
 
 #about h2 {
     font-size: 2rem;
@@ -76,13 +111,31 @@ h1 {
 #about p {
     font-size: 1.4rem;
     max-height: 250px;
+    overflow-y: scroll;
+    padding-right: 1rem;
+
+}
+
+#about p::-webkit-scrollbar {
+    width: 7px;
+}
+  
+#about p::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+  
+#about p::-webkit-scrollbar-thumb {
+    background: rgba(0, 204, 222, 0.867);
+    border-radius: 2px;
+}
+  
+#about p::-webkit-scrollbar-thumb:hover {
+    background: rgb(1, 175, 178);
 }
 
 button {
     width: 18rem;
     height: 4.7rem;
-
-    margin: 2rem 0;
 
     background-color: var(--txt-clr);
     font-weight: 700;
@@ -113,15 +166,27 @@ footer {
     color: var(--footer-clr);
 }
 
-@media (max-width: 427px){
+@media (max-width: 458px){
     body {
         height: 100%;
         width: 100%;
     }
     
+    header {
+        margin: 5rem auto 2rem;
+    }
+    nav {
+       justify-content: center;
+       align-items: center;
+    }
+    nav li {
+        font-size: 2rem;
+    }
+
     #logo {
-        margin-top: 6rem;
-        margin-bottom: 2rem;
+        width: 6rem;
+        height: 4.9rem;
+        margin: 0;
     }
 
     #movie {
@@ -129,9 +194,8 @@ footer {
     }
 
     #about {
-        margin: 0 auto;
-        width: auto;
         text-align: center;
+        width: 31rem;
     }
 
     #about h2 {
@@ -143,6 +207,9 @@ footer {
         font-size: 1.2rem;
         width: 200px;
         max-height: 310px;
+        margin: 0 auto;
+
+
     }
     
     button {
@@ -157,24 +224,22 @@ footer {
     }
 }
 
-@media (min-width: 428px) and (max-width: 578px){
-
-    
-
+@media (min-width: 459px) and (max-width: 578px){
     h1 {
         font-weight: 700;
         font-size: 2.5rem;
     }
-
-    
+    #about {
+        width: 25rem;
+    }
 
     #about h2 {
         font-size: 2rem;
     }
     
     #about p {
-        font-size: 1.4rem;
-        width: 400px;
+        font-size: 1.2rem;
+        width: 250px;
     }
     
     footer {
@@ -190,14 +255,17 @@ footer {
         font-size: 4rem;
     }
     
+    #movie {
+        margin: 1.9rem 0;
+    }
+    
     #about h2 {
         font-size: 2rem;
-        margin: 1.9rem 0;
     }
     
     #about p {
         font-size: 1.6rem;
-        width: 40vw;
+        max-width: 400px;
         max-height: 274px;
     }
     

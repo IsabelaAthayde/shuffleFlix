@@ -1,45 +1,76 @@
-import { API_KEY, BASE_URL, IMG_URL, language, API_URL } from "./api.js";
+import {IMG_URL, MOVIE_URL, TV_URL } from "./api.js";
 
-const poster = document.querySelector("#movie img");
-const title = document.querySelector("#about h2");
-const synopsis = document.querySelector("#about p");
+const movie = document.querySelector("#movie");
+const infoContainer = document.querySelector("#about");
 const shuffleButton = document.querySelector("button");
+const findTypeText = document.querySelector("#type");
+
+const poster = document.createElement("img");
+const displayTitle = document.createElement("h2");
+const synopsis = document.createElement("p");
+
+let URL = "";
+let currIndex = 0;
 
 
-function addTvShow(list, randomMovie) {
-    let imgSrc = list[randomMovie].poster_path
-    let { name } = list[randomMovie]
-    let { overview } = list[randomMovie]
+window.addEventListener("click", (e) => {
+    console.log(e.target.id)
+    let type = e.target.textContent;
+    
+    if(type == "Filmes") {
+        URL = MOVIE_URL;
+        shuffleButton.innerHTML = `<img src="./assets/shuffle.svg" alt="">Encontrar Filme`;
+        findTypeText.textContent = "filme"
+    } else if(type == "Séries") {
+        URL = TV_URL;
+        shuffleButton.innerHTML = `<img src="./assets/shuffle.svg" alt="">Encontrar Série`;
+        findTypeText.textContent = "série"
+    }
 
-    console.log(name, imgSrc, overview)
+    let clickedOnButton = (e.target.id == "button");
+    if (clickedOnButton) {
+        shuffleTvShow(URL)
+    }
+})
+
+function addTvShow(list, index, url) {
+    let imgSrc = list[index].poster_path
+    let title;
+    console.log("urdddl", url)
+
+    if(url == MOVIE_URL) {
+       title = list[index].title 
+    }  else {
+        title = list[index].name
+
+    }
+    let overview = list[index].overview
+
+    console.log(title, imgSrc, overview)
 
     if( overview == "") {
         poster.setAttribute('src', (IMG_URL + imgSrc))
-        title.textContent = name;
+        displayTitle.textContent = title;
         synopsis.textContent = "Sinopse Não encontrada!! Veja e descubra o mistério"; 
     } else {
         poster.setAttribute('src', (IMG_URL + imgSrc))
-        title.textContent = name;
+        displayTitle.textContent = title;
         synopsis.textContent = overview; 
     }
+    movie.prepend(poster)
+    infoContainer.append(displayTitle, synopsis)
 }
 
-let randomMovie = 0;
 function shuffleTvShow(url) {
-
+    console.log("url", url)
    fetch(url)
     .then(data => data.json())
     .then((data) => {
         console.log(data.results)
-        if(randomMovie == 20) {
-            randomMovie = 0;
+        if(currIndex == 20) {
+            currIndex = 0;
         }
-        addTvShow(data.results, randomMovie)
+        addTvShow(data.results, currIndex, url)
     })
-    randomMovie++
-}
-
-shuffleButton.onclick = () => {
-    console.log("clicked")
-    shuffleTvShow(API_URL)
+    currIndex++
 }
